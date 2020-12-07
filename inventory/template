@@ -1,0 +1,67 @@
+[clusterchain]
+10.133.6.1 disks="/dev/nvme0n1p1;/opt/data" remotecommit2hosts="" preinstall="true" concurrentlimit=1 allowdefault="true" ansible_ssh_user=test ansible_ssh_pass=123456 ansible_sudo_pass=123456 complexdisks="" minerid=t023152 chainnoderole="main"
+
+[clusterchain:vars]
+role=chainnode
+
+[clusterminer]
+10.133.6.2 disks="/dev/nvme0n1p1;/opt/data" remotecommit2hosts="" preinstall="true" concurrentlimit=1 allowdefault="true" ansible_ssh_user=test ansible_ssh_pass=123456 ansible_sudo_pass=123456 complexdisks="" minerid=t023152 ignoreinit="true"
+
+[clusterminer:vars]
+role=miner
+
+[clusterworker]
+10.133.6.3 ansible_ssh_user=test ansible_ssh_pass=123456 ansible_sudo_pass=123456 hostdirs="" disks="/dev/nvme1n1p1;/mnt/nvme1n1p1 /dev/nvme0n1p1;/mnt/nvme0n1p1" complexdisks=""
+10.133.6.4 ansible_ssh_user=test ansible_ssh_pass=123456 ansible_sudo_pass=123456 hostdirs="" disks="/dev/nvme0n1p1;/mnt/nvme0n1p1 /dev/nvme1n1p1;/mnt/nvme1n1p1" complexdisks=""
+10.133.6.5 ansible_ssh_user=test ansible_ssh_pass=123456 ansible_sudo_pass=123456 hostdirs="" disks="/dev/nvme0n1p1;/mnt/nvme0n1p1 /dev/nvme1n1p1;/mnt/nvme1n1p1" complexdisks=""
+
+[clusterworker:vars]
+role=worker
+
+[ansiblenode]
+127.0.0.1 ansible_ssh_user=test ansible_ssh_pass=123456 ansible_sudo_pass=123456
+
+[clusterstoragenode]
+10.133.6.6 disks="/dev/sd:/mnt/sd" ansible_ssh_user=test ansible_ssh_pass=123456 ansible_sudo_pass=123456 asmonitor="true" mdsrole="none" asmetadata="false" network="10.133.8.0/10"
+10.133.6.7 disks="/dev/sd:/mnt/sd" ansible_ssh_user=test ansible_ssh_pass=123456 ansible_sudo_pass=123456 asmonitor="false" mdsrole="none" asmetadata="false" network="10.133.8.0/10"
+10.133.6.8 disks="/dev/sd:/mnt/sd" ansible_ssh_user=test ansible_ssh_pass=123456 ansible_sudo_pass=123456 asmonitor="false" mdsrole="false" asmetadata="true" network="10.133.8.0/10"
+
+[clusteradminnode]
+10.133.6.9 ansible_ssh_user=test ansible_ssh_pass=123456 ansible_sudo_pass=123456 network="10.133.8.0/10
+
+
+[prometheusservice]
+10.133.6.11 ansible_ssh_user=test ansible_ssh_pass=123456 ansible_sudo_pass=123456
+
+[prometheusfeder]
+106.14.125.55
+
+[prometheusfrpserver]
+106.14.125.55 probindport=8005 prolistenport=8085 ansible_ssh_user=root ansible_ssh_pass=123456 ansible_sudo_pass=123456 workspace=/home/test/workspace
+
+[all:vars]
+myip=10.133.6.10
+serverip=10.133.6.11
+parameterhost=10.133.6.111:9999
+parameteruser=test
+parameterpass=123456
+
+enablehugepage=false
+swapsize=64GiB
+
+sectorsize=32GiB
+
+sharestorage=false
+needportforward=false
+externaladdress=144.56.9.4:32759
+prometheusportforward=true
+
+minermoney=1
+clustername=nm-anson-1
+storagefixentries="10.133.6.20:6789,10.133.6.21:6789,10.133.6.22:6789,10.133.6.23:6789,10.133.6.24:6789,10.133.6.25:6789,10.133.6.26:6789,10.133.6.27:6789,10.133.6.28:6789:/"
+storageclusterargs=""
+sharestorage=true
+splitsectordir=true
+
+coldcacheentry="10.133.6.20:6789,10.133.6.21:6789,10.133.6.22:6789,10.133.6.23:6789,10.133.6.24:6789,10.133.6.25:6789,10.133.6.26:6789,10.133.6.27:6789,10.133.6.28:6789:/"
+coldcacheargs=""

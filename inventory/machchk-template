@@ -1,0 +1,85 @@
+[checkminernode]
+192.168.1.1 ansible_ssh_user=test ansible_ssh_pass=admin888 ansible_sudo_pass=admin888
+
+[checkminernode:vars]
+role=Miner
+
+[checknetnode]
+192.168.1.1 ansible_ssh_user=test ansible_ssh_pass=admin888 ansible_sudo_pass=admin888
+
+[checkworkernode]
+192.168.1.2 ansible_ssh_user=test ansible_ssh_pass=admin888 ansible_sudo_pass=admin888
+
+[checkworkernode:vars]
+role=Worker
+disknumber=0
+disksize=10.9T
+cpukey=7302
+cpunumber=1
+gpunumber=1
+gpukey=2080
+memorynumber=32
+memorysize=64G
+totalmemorysize=125G
+nvmenumber=2
+nvmesize=5.8T
+rootpartsize=400G
+osversion=20.04
+ostype=ubuntu
+
+[checkmonnode]
+192.168.1.3 ansible_ssh_user=test ansible_ssh_pass=admin888 ansible_sudo_pass=admin888 testrole=iperf
+
+[checkmonnode:vars]
+role=Storage
+memorynumber=8
+memorysize=16G
+rootpartsize=180G
+varpartsize=300G
+
+[cephadminnode]
+192.168.1.4 ansible_ssh_user=test ansible_ssh_pass=admin888 ansible_sudo_pass=admin888
+
+[checkstoragenode]
+192.168.1.4 ansible_ssh_user=test ansible_ssh_pass=admin888 ansible_sudo_pass=admin888
+
+[checkstoragenode:vars]
+role=Storage
+rootpartsize=106G
+
+[ansiblenode]
+127.0.0.1 ansible_ssh_user=test ansible_ssh_pass=admin888 ansible_sudo_pass=admin888
+
+[all:vars]
+disknumber=12
+disksize=10.9T
+
+cpukey=2620
+cpunumber=2
+
+gpukey=2080
+gpunumber=1
+
+memorynumber=16
+memorysize=64G
+totalmemorysize=62G
+
+nvmenumber=0
+nvmesize=5.8T
+
+rootpartsize=400G
+varpartsize=0
+
+osversion=18.04
+ostype=centos
+
+publicnet=bond4.1000
+clusternet=bond4.1001
+
+gateway=192.168.1.1
+publicaddr=192.168.1
+clusteraddr=192.168.2
+bond_speed=20000
+
+myip=10.133.9.6
+clustername=machchk-template
