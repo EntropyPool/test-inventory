@@ -1,0 +1,73 @@
+[clusterchain]
+10.133.13.117 disks="/dev/sda1;/opt/" remotecommit2hosts="" ansible_ssh_pass=admin888 ansible_sudo_pass=admin888 chainnoderole="main"
+
+[clusterchain:vars]
+role=chainnode
+
+[clusterminer]
+10.133.13.117 disks="/dev/sda1;/opt" remotecommit2hosts=""  ansible_ssh_pass=admin888 ansible_sudo_pass=admin888 ignoreinit="true" autopledgelimit=-1
+
+[clusterminer:vars]
+role=miner
+
+[prometheusfrpserver]
+
+[clusterp1worker]
+
+[clusterp1worker:vars]
+role=p1worker
+
+[clusterp2worker]
+
+[clusterp2worker:vars]
+role=p2worker
+
+[clusterc1worker]
+
+[clusterc1worker:vars]
+role=c1worker
+
+[clusterc2worker]
+
+[clusterc2worker:vars]
+role=c2worker
+
+[clusterstoragenode]
+# The first node should be the access node
+10.133.13.119 ansible_ssh_pass=12345679 ansible_sudo_pass=12345679 asmonitor=true asmetadata=true mdsrole=main ansible_python_interpreter=/usr/bin/python3
+10.133.13.117 ansible_ssh_pass=12345679 ansible_sudo_pass=12345679 asmonitor=true asmetadata=true mdsrole=none ansible_python_interpreter=/usr/bin/python3
+
+[clusteradminnode]
+10.133.13.119 ansible_ssh_pass=12345679 ansible_sudo_pass=12345679 network="10.133.13.0/10"
+
+[prometheusservice]
+
+[prometheusfeder]
+
+[ansiblenode]
+127.0.0.1 ansible_ssh_user=test ansible_ssh_pass=Entr0pyF6m ansible_sudo_pass=Entr0pyF6m
+
+[all:vars]
+minermoney=1
+sectorsize=512MiB
+
+myip=10.133.9.6
+serverip=10.133.9.6
+parameterhost=10.133.8.211:9990
+parameteruser=test
+parameterpass=admin888
+externaladdress=""
+
+sharestorage=true
+needportforward=false
+prometheusportforward=false
+
+clustername=nm-calibration
+storagefixentries="10.133.13.117:6789,10.133.13.119:6789:/"
+storageclusterargs="name=admin,secret=AQA6K9dfTR94GRAAGcKTV5EyScNnirIou9yetg=="
+
+coldcacheentry="10.133.13.117:6789,10.133.13.119:6789:/"
+coldcacheargs="name=admin,secret=AQA6K9dfTR94GRAAGcKTV5EyScNnirIou9yetg=="
+networktype=filecoin
+allproxy=socks5://fans:dsc234234@47.240.52.184:14251
+
