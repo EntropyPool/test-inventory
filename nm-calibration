@@ -1,11 +1,11 @@
 [clusterchain]
-10.133.13.117 disks="/dev/sda1;/opt/" remotecommit2hosts="" ansible_ssh_pass=admin888 ansible_sudo_pass=admin888 chainnoderole="main"
+10.133.13.117 disks="/dev/sda1;/opt/" remotecommit2hosts="" ansible_ssh_pass=12345679 ansible_sudo_pass=12345679 chainnoderole="main"
 
 [clusterchain:vars]
 role=chainnode
 
 [clusterminer]
-10.133.13.117 disks="/dev/sda1;/opt" remotecommit2hosts=""  ansible_ssh_pass=admin888 ansible_sudo_pass=admin888 ignoreinit="true" autopledgelimit=-1
+10.133.13.117 disks="/dev/sda1;/opt" remotecommit2hosts=""  ansible_ssh_pass=12345679 ansible_sudo_pass=12345679 ignoreinit="true" autopledgelimit=-1
 
 [clusterminer:vars]
 role=miner
