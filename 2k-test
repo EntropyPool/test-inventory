@@ -1,0 +1,40 @@
+[chaingenesis]
+# 172.17.0.3 disks=";/opt/data" chainnoderole="main" ansible_ssh_user=root ansible_ssh_pass=123456 ansible_sudo_pass=123456
+
+[chaingenesis:vars]
+role=chainnode
+
+[clusterminer]
+# 172.17.0.2 disks=";/opt/data" ansible_ssh_user=root ansible_ssh_pass=123456 ansible_sudo_pass=123456 concurrentlimit=1 allowdefault="false" autopledgelimit=-1 minerrole="master" enablewinningrole="true" enablewinning="true" ignoreinit="true" ignoreinstall="true"
+# 172.17.0.4 disks=";/opt/data" ansible_ssh_user=root ansible_ssh_pass=123456 ansible_sudo_pass=123456 concurrentlimit=1 allowdefault="false" autopledgelimit=-1 minerrole="slave" minerid="f01001" wallet="" ignoreinit="false" ignoreinstall="false"
+
+
+[clusterp1p2c2worker]
+# 172.17.0.5 disks=";/opt/data" ansible_ssh_user=root ansible_ssh_pass=123456 ansible_sudo_pass=123456 hostdirs=""
+
+[clusterp1p2c2worker:vars]
+role=p1p2c2worker
+
+
+[ansiblenode]
+127.0.0.1
+
+[all:vars]
+minermoney=1
+sectorsize=2KiB
+allproxy="$proxy"
+
+myip=$myip
+parameteruser=test
+parameterpass=123456
+parameterhost=$parameterhost:9999
+
+clustername=2k-test
+
+needportforward=false
+networktype=filecoin
+oldsharestorage=true
+sharestorage=true
+externaladdress=
+licusername=test
+licuserpasswd=123456
